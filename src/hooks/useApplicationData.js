@@ -12,6 +12,22 @@ export default function useApplicationData() {
 
   const setDay = day => setState({ ...state, day });
 
+  function modifySpots(action) {
+    const currentDay = state.day;
+    let days = state.days.map(day => {
+      let spots = day.spots;
+      
+      if (day.name === currentDay) {
+        spots = action === 'book' ? day.spots - 1
+          : day.spots + 1;
+      }
+      
+      return { ...day, spots }; 
+    })
+
+    return days;
+  }
+
   function bookInterview(id, interview) {
     const appointment = {
       ...state.appointments[id],
@@ -22,11 +38,14 @@ export default function useApplicationData() {
       ...state.appointments,
       [id]: appointment
     };
-
+    
     return axios.put(`/api/appointments/${id}`, { interview })
       .then(res => {
+        const days = modifySpots('book');
+
         setState({
           ...state,
+          days,
           appointments
         });
       });
@@ -44,8 +63,11 @@ export default function useApplicationData() {
     };
 
     return axios.delete(`/api/appointments/${id}`).then(res => {
+      const days = modifySpots('cancel');
+
       setState({
         ...state,
+        days,
         appointments
       });
     });
