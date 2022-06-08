@@ -24,5 +24,5 @@ export default function useVisualMode(initial) {
     setHistory(prev => prev.slice(0, -1));
   }
 
-  return { mode, transition, back };
+  return { mode, transition, back, history };
 }

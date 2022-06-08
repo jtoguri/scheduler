@@ -23,7 +23,7 @@ export default function Appointment (props) {
   const ERROR_SAVE = "ERROR_SAVE";
   const ERROR_DELETE = "ERROR_DELETE";
 
-  const { mode, transition, back } = useVisualMode(
+  const { mode, transition, back, history } = useVisualMode(
     props.interview ? SHOW : EMPTY
   );
 
@@ -34,8 +34,10 @@ export default function Appointment (props) {
     };
     
     transition(SAVING);
+    
+    const edit = history[history.length - 1] === "EDIT" ? true : false; 
 
-    props.bookInterview(props.id, interview)
+    props.bookInterview(props.id, interview, edit)
     .then(() => transition(SHOW))
     .catch(error => transition(ERROR_SAVE, true));
   }
