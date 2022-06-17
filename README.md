@@ -1,23 +1,40 @@
 # Interview Scheduler
+React scheduler with up to five appointments per day. Testing done
+using jest, storybook and cypress.
 
-## Setup
+## Getting Started
 
 Install dependencies with `npm install`.
 
-## Running Webpack Development Server
+Clone and install the
+[server](https://github.com/lighthouse-labs/scheduler-api). Follow
+instructions to run the server.
 
-```sh
-npm start
-```
+Run the client with `npm start`.
 
-## Running Jest Test Framework
+Run the jest testing framework with `npm test`.
 
-```sh
-npm test
-```
+Run the storybook visual testbed with `npm run storybook`.
 
-## Running Storybook Visual Testbed
+## Dependencies
+* axios
+* classnames
+* normalize.css
+* react
+* react-dom
+* react-scripts 
 
-```sh
-npm run storybook
-```
+## Dev Dependencies
+* @babel/core: "^7.4.3"
+* @storybook/addon-actions: "^5.0.10"
+* @storybook/addon-backgrounds: "^5.0.10"
+* @storybook/addon-links: "^5.0.10"
+* @storybook/addons: "^5.0.10"
+* @storybook/react: "^5.0.10"
+* @testing-library/jest-dom: "^4.0.0"
+* @testing-library/react: "^8.0.7"
+* @testing-library/react-hooks: "^8.0.0"
+* babel-loader: "^8.0.5"
+* cypress: "^9.7.0"
+* node-sass: "npm:sass@^1.49.7"
+* prop-types: "^15.8.1"
